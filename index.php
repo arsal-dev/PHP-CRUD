@@ -85,9 +85,9 @@ if (isset($_POST['submit'])) {
 
             $sql = "INSERT INTO `contact`(`name`, `email`, `subject`, `image`, `message`) VALUES ('$name','$email','$subject','$newFileName','$message')";
 
-            $result = $conn->query($sql);
+            $results = $conn->query($sql);
 
-            if ($result != true) {
+            if ($results != true) {
                 echo 'data not added to the database please check with system administrator';
             }
         }
@@ -183,7 +183,7 @@ if (isset($_POST['submit'])) {
                         <td><?php echo $row['email'] ?></td>
                         <td><?php echo $row['subject'] ?></td>
                         <td><?php echo $row['message'] ?></td>
-                        <td><a href="#" class="btn btn-danger">DELETE</a> <a href="#" class="btn btn-primary">UPDATE</a></td>
+                        <td><a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">DELETE</a> <a href="#" class="btn btn-primary">UPDATE</a></td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
