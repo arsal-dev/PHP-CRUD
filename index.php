@@ -20,8 +20,6 @@ if (isset($_POST['submit'])) {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
 
-    print_r($_FILES);
-
     $from = $_FILES['image']['tmp_name'];
     $size = $_FILES['image']['size'];
     $filename = $_FILES['image']['full_path'];
@@ -183,7 +181,7 @@ if (isset($_POST['submit'])) {
                         <td><?php echo $row['email'] ?></td>
                         <td><?php echo $row['subject'] ?></td>
                         <td><?php echo $row['message'] ?></td>
-                        <td><a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">DELETE</a> <a href="#" class="btn btn-primary">UPDATE</a></td>
+                        <td><a href="delete.php?id=<?php echo $row['id']; ?>&image=<?php echo $row['image']; ?>" class="btn btn-danger">DELETE</a> <a href="./update.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">UPDATE</a></td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
