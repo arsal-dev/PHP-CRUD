@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <input type="submit" name="submit" class="btn btn-primary mt-3">
                 </form>
-                <a href="#" class="card-link">Don't have an Account?</a>
+                <a href="./register.php" class="card-link">Don't have an Account?</a>
             </div>
         </div>
     </div>

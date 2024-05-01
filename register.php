@@ -6,24 +6,27 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-
-    $sql = "SELECT * FROM users WHERE email = '$email'";
-
-    $res = $conn->query($sql);
-
-    if ($res->num_rows > 0) {
-        echo 'Email Already Exists Please Login';
+    if (!preg_match("^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$^", $password)) {
+        echo 'Password Must contain Minimum eight characters, at least one letter, one number and one special character';
     } else {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "SELECT * FROM users WHERE email = '$email'";
 
-        $sql = "INSERT INTO `users` (`email`, `password`) VALUES ('$email','$hashed_password')";
+        $res = $conn->query($sql);
 
-        $conn->query($sql);
+        if ($res->num_rows > 0) {
+            echo 'Email Already Exists Please Login';
+        } else {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        session_start();
-        $_SESSION['user_id'] = $conn->insert_id;
+            $sql = "INSERT INTO `users` (`email`, `password`) VALUES ('$email','$hashed_password')";
 
-        header('Location: index.php');
+            $conn->query($sql);
+
+            session_start();
+            $_SESSION['user_id'] = $conn->insert_id;
+
+            header('Location: index.php');
+        }
     }
 }
 
