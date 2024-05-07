@@ -19,5 +19,6 @@ createForm.addEventListener('submit', async function (e) {
 
     if (res.status == 200) {
         document.querySelector('#success-alert').classList.remove('d-none');
+        get();
     }
 });
