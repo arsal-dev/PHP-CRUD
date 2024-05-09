@@ -18,7 +18,7 @@
     <div class="container mt-5">
         <div class="alert alert-success d-none" id="success-alert" role="alert">
             <h4 class="alert-heading">Well done!</h4>
-            <p>data saved into the database.</p>
+            <p id="success-message">data saved into the database.</p>
         </div>
         <form id="create_form">
             <div>
@@ -58,7 +58,45 @@
             <tbody id="get-table-body"></tbody>
         </table>
     </div>
-    <!-- Modal -->
+
+    <!-- Update Modal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Update Data</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="update_form">
+                        <input type="hidden" id="up_id">
+                        <div>
+                            <label for="up_name">name</label>
+                            <input type="text" id="up_name" name="name" class="form-control">
+                        </div>
+                        <div>
+                            <label for="up_email">email</label>
+                            <input type="text" id="up_email" name="email" class="form-control">
+                        </div>
+                        <div>
+                            <label for="up_phone">phone</label>
+                            <input type="text" id="up_phone" name="phone" class="form-control">
+                        </div>
+                        <div>
+                            <label for="address">address</label>
+                            <input type="text" id="up_address" name="address" class="form-control">
+                        </div>
+
+                        <input type="submit" data-bs-dismiss="modal" class="btn btn-primary mt-3">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Delete Modal -->
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -71,7 +109,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a type="button" id="deleteModalBtn" class="btn btn-danger">YES</a>
+                    <button type="button" id="deleteModalBtn" class="btn btn-danger"
+                        data-bs-dismiss="modal">YES</button>
                 </div>
             </div>
         </div>
@@ -80,6 +119,7 @@
     <script src="./scripts/create.js"></script>
     <script src="./scripts/get.js"></script>
     <script src="./scripts/delete.js"></script>
+    <script src="./scripts/update.js"></script>
 </body>
 
 </html>

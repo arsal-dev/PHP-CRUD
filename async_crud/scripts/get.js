@@ -14,6 +14,9 @@ async function get() {
         updateBtn.innerHTML = 'update';
         updateBtn.classList.add('btn');
         updateBtn.classList.add('btn-primary');
+        updateBtn.setAttribute('data-bs-toggle', 'modal');
+        updateBtn.setAttribute('data-bs-target', '#updateModal');
+        updateBtn.setAttribute('onClick', 'updateData(this)');
         updateTd.append(updateBtn);
 
         deleteTd = document.createElement('td');
